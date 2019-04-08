@@ -1,5 +1,6 @@
 package com.kaikai.cable.cable_tem_det;
 
+import android.content.Intent;
 import android.os.Looper;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -33,7 +34,14 @@ public class LoginActivity extends ActionBarActivity
         textPassword = (EditText)findViewById(R.id.et_password);
         butRegist = (Button)findViewById(R.id.btn_regist);
         butLogin = (Button)findViewById(R.id.btn_login);
-
+        //注册按钮事件
+        butRegist.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,RegistActivity.class));
+                LoginActivity.this.finish();
+            }
+        });
         //登录按钮事件
         butLogin.setOnClickListener(new OnClickListener()
         {
