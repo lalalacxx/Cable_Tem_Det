@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:rowCount="2"
+    android:columnCount="2">
+    <!--6行4列
+    实现占满整个屏幕-->
+
+    <Button
+        android:id="@+id/a"
+        android:text="我的账号"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="30dp"
+        android:textColor="#fff"
+        android:background="@drawable/button_login_bg"/>
+
+
+    //列 行权重为1
+    <Button
+        android:id="@+id/b"
+        android:text="查询数据"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="30dp"
+        android:textColor="#fff"
+        android:background="@drawable/button_login_bg"/>
+    //列 行权重为1
+    <Button
+        android:id="@+id/c"
+        android:text="设备管理"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="30dp"
+        android:textColor="#fff"
+        android:background="@drawable/button_login_bg"/>
+    //列 行权重为1
+    <Button
+        android:id="@+id/d"
+        android:text="温度预警"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="30dp"
+        android:textColor="#fff"
+        android:background="@drawable/button_login_bg"/>
+</GridLayout>

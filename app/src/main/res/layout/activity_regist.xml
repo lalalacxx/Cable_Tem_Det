@@ -42,6 +42,7 @@
             android:layout_marginTop="10dp"
             android:background="@null"
             android:hint="请输入用户名"
+            android:typeface="normal"
             android:maxLength="13"
             android:singleLine="true"
             android:textColor="#fff"
@@ -63,7 +64,7 @@
             android:background="@null"
             android:hint="请输入密码"
             android:inputType="textPassword"
-            android:maxLength="13"
+            android:maxLength="16"
             android:singleLine="true"
             android:textColor="#fff"
             android:textColorHint="#eee" />
@@ -83,7 +84,8 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="请输入邮箱"
-            android:maxLength="13"
+            android:typeface="normal"
+            android:inputType="textEmailAddress"
             android:singleLine="true"
             android:textColor="#fff"
             android:textColorHint="#eee" />
@@ -103,7 +105,9 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="请输入电话"
-            android:maxLength="13"
+            android:typeface="normal"
+            android:inputType="number"
+            android:maxLength="11"
             android:singleLine="true"
             android:textColor="#fff"
             android:textColorHint="#eee" />

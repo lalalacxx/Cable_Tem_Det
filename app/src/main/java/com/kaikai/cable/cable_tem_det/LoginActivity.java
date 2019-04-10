@@ -5,6 +5,7 @@ import android.os.Looper;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,24 @@ public class LoginActivity extends ActionBarActivity
     private EditText textPassword = null;
     private Button butRegist = null;
     private Button butLogin = null;
+    private long exitTime = 0;
+
+    @Override
+    //监听手机的返回键
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            if((System.currentTimeMillis()-exitTime) > 2000){
+                //登录界面按下返回键,给出提示信息
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -72,7 +91,7 @@ public class LoginActivity extends ActionBarActivity
                                 Looper.prepare();
                                 Toast.makeText(LoginActivity.this, responseMap.get("reason"), Toast.LENGTH_SHORT).show();
                                 Looper.loop();// 进入loop中的循环，查看消息队列
-                            } else
+                            } else//登录成功,跳转至功能选择界面
                             {
 
                             }
