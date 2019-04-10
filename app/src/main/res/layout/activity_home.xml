@@ -2,7 +2,7 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/home_back"
     android:rowCount="2"
     android:columnCount="2">
     <!--6行4列
@@ -15,7 +15,7 @@
         android:layout_rowWeight="1"
         android:textSize="30dp"
         android:textColor="#fff"
-        android:background="@drawable/button_login_bg"/>
+        android:background="@drawable/button_func_bg1" />
 
 
     //列 行权重为1
@@ -26,7 +26,7 @@
         android:layout_rowWeight="1"
         android:textSize="30dp"
         android:textColor="#fff"
-        android:background="@drawable/button_login_bg"/>
+        android:background="@drawable/button_func_bg3"/>
     //列 行权重为1
     <Button
         android:id="@+id/c"
@@ -35,7 +35,7 @@
         android:layout_rowWeight="1"
         android:textSize="30dp"
         android:textColor="#fff"
-        android:background="@drawable/button_login_bg"/>
+        android:background="@drawable/button_func_bg2"/>
     //列 行权重为1
     <Button
         android:id="@+id/d"
@@ -44,5 +44,5 @@
         android:layout_rowWeight="1"
         android:textSize="30dp"
         android:textColor="#fff"
-        android:background="@drawable/button_login_bg"/>
+        android:background="@drawable/button_func_bg4"/>
 </GridLayout>

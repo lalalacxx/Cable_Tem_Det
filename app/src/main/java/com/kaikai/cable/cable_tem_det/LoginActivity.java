@@ -93,7 +93,8 @@ public class LoginActivity extends ActionBarActivity
                                 Looper.loop();// 进入loop中的循环，查看消息队列
                             } else//登录成功,跳转至功能选择界面
                             {
-
+                                startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                                LoginActivity.this.finish();
                             }
                         }
                     }).start();
