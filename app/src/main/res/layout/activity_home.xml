@@ -1,48 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_back"
-    android:rowCount="2"
-    android:columnCount="2">
-    <!--6行4列
-    实现占满整个屏幕-->
+    android:background="@drawable/home_back_bg">
 
-    <Button
-        android:id="@+id/a"
-        android:text="我的账号"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:textSize="30dp"
-        android:textColor="#fff"
-        android:background="@drawable/button_func_bg1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#55000000"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
 
-    //列 行权重为1
-    <Button
-        android:id="@+id/b"
-        android:text="查询数据"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:textSize="30dp"
-        android:textColor="#fff"
-        android:background="@drawable/button_func_bg3"/>
-    //列 行权重为1
-    <Button
-        android:id="@+id/c"
-        android:text="设备管理"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:textSize="30dp"
-        android:textColor="#fff"
-        android:background="@drawable/button_func_bg2"/>
-    //列 行权重为1
-    <Button
-        android:id="@+id/d"
-        android:text="温度预警"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:textSize="30dp"
-        android:textColor="#fff"
-        android:background="@drawable/button_func_bg4"/>
-</GridLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="70dp" />
+
+        <Button
+            android:id="@+id/btn_device"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/button_func_bg2"
+            android:text="设备管理"
+            android:textSize="25dp"
+            android:textColor="#fff" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/btn_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_func_bg2"
+            android:text="数据查询"
+            android:textSize="25dp"
+            android:textColor="#fff" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/btn_warn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_func_bg2"
+            android:text="温度预警"
+            android:textSize="25dp"
+            android:textColor="#fff" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/btn_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_func_bg2"
+            android:text="个人中心"
+            android:textSize="25dp"
+            android:textColor="#fff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

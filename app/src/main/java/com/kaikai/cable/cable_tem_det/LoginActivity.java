@@ -66,10 +66,10 @@ public class LoginActivity extends ActionBarActivity
         {
             @Override
             public void onClick(View var1) {
-                final String userName = textUserName.getText().toString();
+                final String account = textUserName.getText().toString();
                 final String password = textPassword.getText().toString();
-                System.err.println(userName+password);
-                if (userName.equals("") || password.equals("")) {
+                System.err.println(account+password);
+                if (account.equals("") || password.equals("")) {
                 //if (false) {
                     Toast.makeText(LoginActivity.this, "用户名和密码不能为空!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -78,7 +78,7 @@ public class LoginActivity extends ActionBarActivity
                         @Override
                         public void run() {
                             Map<String, String> requestMap = new HashMap<String, String>();
-                            requestMap.put("userName", userName);
+                            requestMap.put("userName", account);
                             requestMap.put("password", password);
                             String requestData = Util.json_encode(requestMap);
                             String response = Util.sendJsonPost(requestData, urlEnum.LOGIN_URL);

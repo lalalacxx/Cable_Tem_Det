@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/user_back">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#55000000"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_safe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="账号与安全"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:gravity="center_vertical|left"/>
+
+        <Button
+            android:id="@+id/btn_myDevice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="我的设备"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:gravity="center_vertical|left"/>
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@android:color/transparent"
+            android:text="清空缓存"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:gravity="center_vertical|left"/>
+
+        <Button
+            android:id="@+id/btn_suggest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="意见反馈"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:gravity="center_vertical|left"/>
+
+        <Button
+            android:id="@+id/btn_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="检查更新"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:gravity="center_vertical|left"/>
+
+        <Button
+            android:id="@+id/btn_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="隐私政策"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:gravity="center_vertical|left"/>
+
+        <Button
+            android:id="@+id/btn_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="关于"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:gravity="center_vertical|left"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
