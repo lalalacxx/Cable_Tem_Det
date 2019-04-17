@@ -15,56 +15,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="150dp"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="电缆温度检测系统"
-                android:textColor="#fff"
-                android:textSize="30dp" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginTop="60dp" />
         </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="20dp" />
-        <EditText
-            android:id="@+id/et_account"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@null"
-            android:hint="账号/手机号"
-            android:maxLength="13"
-            android:singleLine="true"
-            android:textColor="#fff"
-            android:textColorHint="#eee"
-            android:alpha="0.3"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="10dp"
-            android:background="#eee" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="20dp" />
 
         <EditText
-            android:id="@+id/et_password"
+            android:id="@+id/new_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:hint="密码"
+            android:hint="填写新密码"
             android:inputType="textPassword"
             android:maxLength="13"
             android:singleLine="true"
@@ -77,33 +39,48 @@
             android:layout_height="1px"
             android:layout_marginTop="10dp"
             android:background="#eee" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/renew_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="再次填写确认"
+            android:inputType="textPassword"
+            android:maxLength="13"
+            android:singleLine="true"
+            android:textColor="#fff"
+            android:textColorHint="#eee"
+            android:alpha="0.3"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="10dp"
+            android:background="#eee" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginTop="30dp"
-             />
+            />
 
         <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/button_login_bg"
-            android:text="登录"
-            android:textColor="#fff"
+        android:id="@+id/btn_upPW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/button_login_bg"
+        android:text="完成"
+        android:textColor="#fff"
             android:alpha="0.7"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginTop="20dp" />
-        <Button
-            android:id="@+id/btn_regist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_login_bg"
-            android:text="注册"
-            android:textColor="#fff"
-            android:alpha="0.7"/>
 
         <LinearLayout
             android:layout_width="match_parent"

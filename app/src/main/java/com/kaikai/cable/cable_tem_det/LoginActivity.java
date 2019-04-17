@@ -78,7 +78,7 @@ public class LoginActivity extends ActionBarActivity
                         @Override
                         public void run() {
                             Map<String, String> requestMap = new HashMap<String, String>();
-                            requestMap.put("userName", account);
+                            requestMap.put("account", account);
                             requestMap.put("password", password);
                             String requestData = Util.json_encode(requestMap);
                             String response = Util.sendJsonPost(requestData, urlEnum.LOGIN_URL);
@@ -93,6 +93,8 @@ public class LoginActivity extends ActionBarActivity
                                 Looper.loop();// 进入loop中的循环，查看消息队列
                             } else//登录成功,跳转至功能选择界面
                             {
+                                Util.uid = responseMap.get("uid");
+                                System.err.println("uid:" +Util.uid);
                                 startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                                 LoginActivity.this.finish();
                             }

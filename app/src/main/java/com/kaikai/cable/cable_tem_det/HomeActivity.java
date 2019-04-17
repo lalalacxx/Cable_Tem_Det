@@ -2,11 +2,16 @@ package com.kaikai.cable.cable_tem_det;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import common.Util;
 
 /**
  * Created by cxx on 2019/4/10.
@@ -42,6 +47,7 @@ public class HomeActivity extends ActionBarActivity {
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.err.println("主页拿到uid: " +  Util.uid);
                 startActivity(new Intent(HomeActivity.this, UserActivity.class));
                 HomeActivity.this.finish();
             }
@@ -71,4 +77,5 @@ public class HomeActivity extends ActionBarActivity {
             }
         });*/
     }
+
 }

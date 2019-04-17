@@ -2,9 +2,11 @@ package com.kaikai.cable.cable_tem_det;
 
 import android.content.Intent;
 import android.os.Looper;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +46,7 @@ public class RegistActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regist);
+        ActionBar actionBar=getSupportActionBar();
         textUserName = (EditText)findViewById(R.id.re_account);
         textPassword = (EditText)findViewById(R.id.re_password);
         textUseremail = (EditText)findViewById(R.id.re_email);
@@ -89,6 +92,10 @@ public class RegistActivity extends ActionBarActivity
                             if (code != null) {
                                 Looper.prepare();
                                 Toast.makeText(RegistActivity.this, responseMap.get("reason"), Toast.LENGTH_SHORT).show();
+                                if(code.equals("10007"))  {
+                                    startActivity(new Intent(RegistActivity.this, LoginActivity.class));
+                                    RegistActivity.this.finish();
+                                }
                                 Looper.loop();// 进入loop中的循环，查看消息队列
                             } else {
                                 //注册成功,给出提示信息,跳转至登录界面
@@ -105,5 +112,22 @@ public class RegistActivity extends ActionBarActivity
             }
         });
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.action_bar, menu);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//添加返回箭头
+        getSupportActionBar().setTitle("注册");  //设置Title文字
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // 返回上一界面
+    @Override
+    public boolean onSupportNavigateUp()
+    {
+        startActivity(new Intent(RegistActivity.this, LoginActivity.class));
+        RegistActivity.this.finish();
+        return super.onSupportNavigateUp();
     }
 }

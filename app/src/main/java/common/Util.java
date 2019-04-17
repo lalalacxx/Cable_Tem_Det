@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Util {
+    public static String uid = "";
     /**
      * @param jsonData
      * @return map
@@ -26,6 +27,7 @@ public class Util {
         String status = "";
         String code = "";
         String reason = "";
+        String uid = "";
         Map<String, String> map = new HashMap<String, String>();
         try
         {
@@ -33,6 +35,8 @@ public class Util {
                 if (jsonObject != null) {
                     status = jsonObject.getString("status");
                     map.put("status", status);
+                    uid = jsonObject.getString("uid");
+                    map.put("uid", uid);
                     JSONObject bizData = jsonObject.getJSONObject("bizData");
                     if (bizData != null)  {
                         for (int i = 0; i < data.length; i++) {
