@@ -8,8 +8,11 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.lang.reflect.Field;
 
 import common.Util;
 

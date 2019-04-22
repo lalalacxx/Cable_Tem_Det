@@ -40,6 +40,18 @@
             android:name=".UpdatePWActivity"
             android:label="修改登录密码">
         </activity>
+        <activity
+            android:name=".NULLDeviceActivity"
+            android:label="添加设备">
+        </activity>
+        <activity
+            android:name=".AddDeviceActivity"
+            android:label="我的设备">
+        </activity>
+        <activity
+            android:name=".MyDeviceActivity"
+            android:label="我的设备">
+        </activity>
     </application>
 
 </manifest>

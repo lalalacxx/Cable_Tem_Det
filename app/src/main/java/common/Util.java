@@ -112,4 +112,29 @@ public class Util {
         }
         return result;
     }
+    public static String[] getResult(String jsonData) {
+        String[] result = {};
+        try{
+            JSONObject jsonObject = new JSONObject(jsonData);
+            if(jsonObject != null) {
+                JSONObject bizData = jsonObject.getJSONObject("bizData");
+                if(bizData != null) {
+                    System.err.println("biaData:" +bizData);
+                    JSONArray resultTmp = bizData.getJSONArray("result");
+                    result = new String[resultTmp.length()];
+                    for(int j = 0;j < resultTmp.length();j++){
+                        JSONObject resultTmpJSONObject = resultTmp.getJSONObject(j);
+                        System.err.println("resultTmpJSONObject:" +resultTmpJSONObject);
+                        result[j] = resultTmpJSONObject.getString("did");
+                        System.err.println("result" +j+":"+result);
+                    }
+                }
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        System.err.println("result:" +result);
+        return result;
+    }
 }

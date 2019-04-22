@@ -17,6 +17,10 @@
             android:orientation="horizontal" >
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="5dp" />
         <Button
             android:id="@+id/btn_safe"
             android:layout_width="match_parent"

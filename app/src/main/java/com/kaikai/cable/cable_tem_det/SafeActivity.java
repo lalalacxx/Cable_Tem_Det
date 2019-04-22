@@ -57,7 +57,7 @@ public class SafeActivity extends ActionBarActivity {
     }
 
     //更改用户名的对话框
-    public void alert_edit_username(View view){
+    /*public void alert_edit_username(View view){
         final EditText et = new EditText(this);
         new AlertDialog.Builder(this).setTitle("修改用户名")
                 .setView(et)
@@ -97,7 +97,7 @@ public class SafeActivity extends ActionBarActivity {
                         }
                     }
                 }).setNegativeButton("取消", null).show();
-    }
+    }*/
     //更改邮箱的对话框
     public void alert_edit_email(View view){
         final EditText et = new EditText(this);
@@ -116,7 +116,7 @@ public class SafeActivity extends ActionBarActivity {
                                 public void run() {
                                     Map<String, String> requestMap = new HashMap<String, String>();
                                     requestMap.put("uid", Util.uid);
-                                    requestMap.put("email", et.getText().toString());
+                                    requestMap.put("userEmail", et.getText().toString());
                                     String requestData = Util.json_encode(requestMap);
                                     String response = Util.sendJsonPost(requestData, urlEnum.ChangeEmail_URL);
                                     Map<String, String> responseMap = new HashMap<String, String>();
@@ -158,7 +158,7 @@ public class SafeActivity extends ActionBarActivity {
                                 public void run() {
                                     Map<String, String> requestMap = new HashMap<String, String>();
                                     requestMap.put("uid", Util.uid);
-                                    requestMap.put("mobile", et.getText().toString());
+                                    requestMap.put("userPhone", et.getText().toString());
                                     String requestData = Util.json_encode(requestMap);
                                     String response = Util.sendJsonPost(requestData, urlEnum.ChangeMobile_URL);
                                     Map<String, String> responseMap = new HashMap<String, String>();
