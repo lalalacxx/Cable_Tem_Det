@@ -32,5 +32,6 @@
                 android:textSize="15dp"
                 android:alpha="0.5" />
             </LinearLayout>
-        </FrameLayout>
+    </FrameLayout>
+
 </LinearLayout>

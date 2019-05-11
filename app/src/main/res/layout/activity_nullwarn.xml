@@ -1,0 +1,37 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/null_device_bg"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|center_horizontal|center_vertical">
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/null_device"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#55000000"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp" >
+            <Button
+                android:id="@+id/btn_nullWarn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="350dp"
+                android:background="@drawable/button_null_device_add"
+                android:text="这里没有异常哦~,去查看其它数据吧"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:alpha="0.5" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

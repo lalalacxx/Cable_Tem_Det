@@ -20,8 +20,7 @@ import bsEnum.urlEnum;
 import common.Util;
 
 
-public class RegistActivity extends ActionBarActivity
-{
+public class RegistActivity extends ActionBarActivity {
     private EditText textUserName = null;
     private EditText textPassword = null;
     private EditText textUseremail = null;

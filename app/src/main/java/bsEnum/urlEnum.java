@@ -9,5 +9,7 @@ public class urlEnum {
     public static final String GetUserDevice_URL = "http://47.93.189.83/api/device/getuserdevice";
     public static final String AddDevice_URL = "http://47.93.189.83/api/device/adddevice";
     public static final String DelDevice_URL = "http://47.93.189.83/api/device/deldevice";
+    public static final String CheckDeviceTem_URL = "http://47.93.189.83/api/device/gettem";
+    public static final String GetWarnTem_URL = "http://47.93.189.83/api/device/getwarntem";
 
 }

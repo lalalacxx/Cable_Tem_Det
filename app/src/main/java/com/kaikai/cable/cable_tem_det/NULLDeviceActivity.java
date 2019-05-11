@@ -1,16 +1,15 @@
 package com.kaikai.cable.cable_tem_det;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-
 /**
  * Created by cxx on 2019/4/20.
  */
-public class NULLDeviceActivity extends Activity{
+public class NULLDeviceActivity extends ActionBarActivity {
 
     private Button btnAddDevice = null;
 
@@ -38,5 +37,22 @@ public class NULLDeviceActivity extends Activity{
                 NULLDeviceActivity.this.finish();
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.action_bar, menu);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//添加返回箭头
+        getSupportActionBar().setTitle("设备管理");  //设置Title文字
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // 返回上一界面
+    @Override
+    public boolean onSupportNavigateUp()
+    {
+        startActivity(new Intent(NULLDeviceActivity.this, HomeActivity.class));
+        NULLDeviceActivity.this.finish();
+        return super.onSupportNavigateUp();
     }
 }

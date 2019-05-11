@@ -87,14 +87,18 @@ public class LoginActivity extends ActionBarActivity
                             responseMap = Util.json_decode(data, response);
                             String code = responseMap.get("code");
                             System.err.println("code:" + code);
+                            System.err.println("UuID:" + Util.uid);
                             if (code != null) {
                                 Looper.prepare();
                                 Toast.makeText(LoginActivity.this, responseMap.get("reason"), Toast.LENGTH_SHORT).show();
                                 Looper.loop();// 进入loop中的循环，查看消息队列
                             } else//登录成功,跳转至功能选择界面
                             {
-                                Util.uid = responseMap.get("uid");
-                                System.err.println("uid:" +Util.uid);
+                                /*Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                Bundle bundle_path = new Bundle();
+                                bundle_path.putSerializable("UID", Util.uid);
+                                intent.putExtras(bundle_path);
+                                startActivity(intent);*/
                                 startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                                 LoginActivity.this.finish();
                             }

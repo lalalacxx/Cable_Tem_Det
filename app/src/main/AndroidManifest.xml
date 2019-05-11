@@ -52,6 +52,18 @@
             android:name=".MyDeviceActivity"
             android:label="我的设备">
         </activity>
+        <activity
+            android:name=".DataShowActivity"
+            android:label="我的设备">
+        </activity>
+        <activity
+            android:name=".NULLWarnActivity"
+            android:label="设备预警">
+        </activity>
+        <activity
+            android:name=".WarnTemActivity"
+            android:label="设备预警">
+        </activity>
     </application>
 
 </manifest>
