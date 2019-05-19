@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import bsEnum.urlEnum;
+import common.MyApplication;
+import common.SerializableMap;
 import common.Util;
 
 /**
@@ -23,8 +25,9 @@ import common.Util;
  */
 public class HomeActivity extends ActionBarActivity {
 
+
     private Button btnUser = null;
-    // private Button btnData = null;
+    private Button btnData = null;
     private Button btnWarn = null;
     private Button btnDevice = null;
 
@@ -45,7 +48,7 @@ public class HomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         btnUser = (Button) findViewById(R.id.btn_user);
-        //   btnData = (Button)findViewById(R.id.btn_data);
+        btnData = (Button)findViewById(R.id.btn_data);
         btnWarn = (Button)findViewById(R.id.btn_warn);
         btnDevice = (Button) findViewById(R.id.btn_device);
         //个人中心按钮事件监听
@@ -65,8 +68,9 @@ public class HomeActivity extends ActionBarActivity {
                     @Override
                     public void run() {
                         Map<String, String> requestMap = new HashMap<String, String>();
-                        requestMap.put("uid", Util.uid);
-                        System.err.println("UIDDD"+Util.uid);
+                        MyApplication myApplication = (MyApplication)getApplication();
+                       String uid =  myApplication.getUid();
+                        requestMap.put("uid", uid);
                         String requestData = Util.json_encode(requestMap);
                         String response = Util.sendJsonPost(requestData, urlEnum.GetUserDevice_URL);
                         Map<String, String> responseMap = new HashMap<String, String>();
@@ -91,27 +95,20 @@ public class HomeActivity extends ActionBarActivity {
                                 bundle_path.putSerializable("DATA", result);
                                 intent.putExtras(bundle_path);
                                 startActivity(intent);
-                                //for(int i = 0;i < result.length;i++)
-                                ///System.err.println("哈哈result:"+result[i]);
-                                //startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-                                //HomeActivity.this.finish();
-
                             }
-
                         }
                     }
                 }).start();
-
             }
         });
         //数据查询按钮事件监听
-        /*btnData.setOnClickListener(new View.OnClickListener() {
+        btnData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, DataActivity.class));
+                startActivity(new Intent(HomeActivity.this, HomeDateShowChooseTDActivity.class));
                 HomeActivity.this.finish();
             }
-        });*/
+        });
         //温度预警按钮事件监听
         btnWarn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +118,9 @@ public class HomeActivity extends ActionBarActivity {
                     @Override
                     public void run() {
                         Map<String, String> requestMap = new HashMap<String, String>();
-                        requestMap.put("uid", Util.uid);
+                        MyApplication myApplication = (MyApplication)getApplication();
+                        String uid =  myApplication.getUid();
+                        requestMap.put("uid",  uid);
                         String requestData = Util.json_encode(requestMap);
                         String response = Util.sendJsonPost(requestData, urlEnum.GetWarnTem_URL);
                         Map<String, String> responseMap = new HashMap<String, String>();
@@ -135,30 +134,26 @@ public class HomeActivity extends ActionBarActivity {
                             Toast.makeText(HomeActivity.this, responseMap.get("reason"), Toast.LENGTH_SHORT).show();
                             Looper.loop();// 进入loop中的循环，查看消息队列
                         } else  {//请求成功,查看result是否为空
-                            String[] result=Util.getResult(response);
-                            if(result.length==0)
-                            {//result没有元素表示没有预警设备
-                                System.err.println("result.length:"+result.length);
+                            String[][] result = Util.getResult2(response);
+                            System.err.println("result.length:"+result.length);
+                            if(result.length==0) {//result没有元素表示没有预警设备
                                 startActivity(new Intent(HomeActivity.this, NULLWarnActivity.class));
                                 HomeActivity.this.finish();
                             }else {//result不为空,则取出每一个数据
                                 Intent intent = new Intent(HomeActivity.this,WarnTemActivity.class);
                                 Bundle bundle_path = new Bundle();
-                                bundle_path.putSerializable("DATA", result);
+                                //bundle_path.putSerializable("DATA", result);
+                                SerializableMap tmpmap=new SerializableMap();
+                                tmpmap.setData(result);
+                                bundle_path.putSerializable("DATA", tmpmap);
+                                //Bundle bundle = new Bundle();
                                 intent.putExtras(bundle_path);
                                 startActivity(intent);
-                                //for(int i = 0;i < result.length;i++)
-                                ///System.err.println("哈哈result:"+result[i]);
-                                //startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-                                //HomeActivity.this.finish();
                             }
                         }
                     }
                 }).start();
             }
         });
-
     }
-
-
 }

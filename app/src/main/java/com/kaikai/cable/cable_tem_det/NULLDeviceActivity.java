@@ -41,7 +41,7 @@ public class NULLDeviceActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.action_bar, menu);
+        getMenuInflater().inflate(R.menu.action_time, menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//添加返回箭头
         getSupportActionBar().setTitle("设备管理");  //设置Title文字
         return super.onCreateOptionsMenu(menu);

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.lang.reflect.Field;
 
+import common.MyApplication;
 import common.Util;
 
 /**
@@ -40,7 +41,6 @@ public class UserActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         ActionBar actionBar=getSupportActionBar();
-
         btnSafe = (Button)findViewById(R.id.btn_safe);
 
 
@@ -48,7 +48,9 @@ public class UserActivity extends ActionBarActivity {
         btnSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.err.println("账户拿到uid: " +  Util.uid);
+                MyApplication myApplication = (MyApplication)getApplication();
+                String uid =  myApplication.getUid();
+                System.err.println("账户拿到uid: " +  uid);
                 startActivity(new Intent(UserActivity.this, SafeActivity.class));
                 UserActivity.this.finish();
             }
@@ -57,17 +59,14 @@ public class UserActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.action_bar,menu);
+        getMenuInflater().inflate(R.menu.action_time, menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("个人中心");  //设置Title文字
         return super.onCreateOptionsMenu(menu);
     }
-
     // 返回上一界面
     @Override
-    public boolean onSupportNavigateUp()
-    {
+    public boolean onSupportNavigateUp() {
         startActivity(new Intent(UserActivity.this, HomeActivity.class));
         UserActivity.this.finish();
         return super.onSupportNavigateUp();

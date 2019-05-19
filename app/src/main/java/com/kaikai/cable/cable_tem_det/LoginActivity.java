@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import bsEnum.urlEnum;
+import common.MyApplication;
 import common.Util;
 
 
@@ -62,18 +63,15 @@ public class LoginActivity extends ActionBarActivity
             }
         });
         //登录按钮事件
-        butLogin.setOnClickListener(new OnClickListener()
-        {
+        butLogin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View var1) {
                 final String account = textUserName.getText().toString();
                 final String password = textPassword.getText().toString();
-                System.err.println(account+password);
+                System.err.println(account + password);
                 if (account.equals("") || password.equals("")) {
-                //if (false) {
                     Toast.makeText(LoginActivity.this, "用户名和密码不能为空!", Toast.LENGTH_SHORT).show();
-                } else {
-                    //向服务端传输数据
+                } else {//向服务端传输数据
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -86,19 +84,15 @@ public class LoginActivity extends ActionBarActivity
                             String[] data = {"code", "reason"};
                             responseMap = Util.json_decode(data, response);
                             String code = responseMap.get("code");
+                            String uid = responseMap.get("uid");
+                            MyApplication myApplication = (MyApplication)getApplication();
+                            myApplication.setUid(uid);
                             System.err.println("code:" + code);
-                            System.err.println("UuID:" + Util.uid);
                             if (code != null) {
                                 Looper.prepare();
                                 Toast.makeText(LoginActivity.this, responseMap.get("reason"), Toast.LENGTH_SHORT).show();
                                 Looper.loop();// 进入loop中的循环，查看消息队列
-                            } else//登录成功,跳转至功能选择界面
-                            {
-                                /*Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                                Bundle bundle_path = new Bundle();
-                                bundle_path.putSerializable("UID", Util.uid);
-                                intent.putExtras(bundle_path);
-                                startActivity(intent);*/
+                            } else {//登录成功,跳转至功能选择界面
                                 startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                                 LoginActivity.this.finish();
                             }

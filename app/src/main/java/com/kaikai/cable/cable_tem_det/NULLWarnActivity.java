@@ -34,7 +34,8 @@ public class NULLWarnActivity extends ActionBarActivity {
         btnTurnTem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(NULLWarnActivity.this,DataShowActivity.class));
+                //没有预警设备,则跳转至选择设备及时间界面,选择设备时间查看数据
+                startActivity(new Intent(NULLWarnActivity.this,ChooseTDActivity.class));
                 NULLWarnActivity.this.finish();
             }
         });
@@ -42,7 +43,7 @@ public class NULLWarnActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.action_bar, menu);
+        getMenuInflater().inflate(R.menu.action_time, menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//添加返回箭头
         getSupportActionBar().setTitle("温度预警");  //设置Title文字
         return super.onCreateOptionsMenu(menu);

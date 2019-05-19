@@ -1,14 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.actionbartest.MainActivity" >
-
+    tools:context="com.example.actionbar.MainActivity" >
     <item
         android:id = "@+id/menu_add"
         android:title="@string/add" />
-
-    <item
-        android:id = "@+id/menu_del"
-        android:title="@string/delete"/>
-
-
 </menu>

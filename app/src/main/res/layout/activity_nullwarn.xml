@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="350dp"
                 android:background="@drawable/button_null_device_add"
-                android:text="这里没有异常哦~,去查看其它数据吧"
+                android:text="暂时没有异常哦~,去查看其它数据吧"
                 android:textColor="#fff"
                 android:textSize="15dp"
                 android:alpha="0.5" />

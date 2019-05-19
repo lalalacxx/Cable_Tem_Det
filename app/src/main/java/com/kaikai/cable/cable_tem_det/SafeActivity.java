@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import bsEnum.urlEnum;
+import common.MyApplication;
 import common.Util;
 
 /**
@@ -115,7 +116,9 @@ public class SafeActivity extends ActionBarActivity {
                                 @Override
                                 public void run() {
                                     Map<String, String> requestMap = new HashMap<String, String>();
-                                    requestMap.put("uid", Util.uid);
+                                    MyApplication myApplication = (MyApplication)getApplication();
+                                    String uid =  myApplication.getUid();
+                                    requestMap.put("uid",  uid);
                                     requestMap.put("userEmail", et.getText().toString());
                                     String requestData = Util.json_encode(requestMap);
                                     String response = Util.sendJsonPost(requestData, urlEnum.ChangeEmail_URL);
@@ -157,7 +160,9 @@ public class SafeActivity extends ActionBarActivity {
                                 @Override
                                 public void run() {
                                     Map<String, String> requestMap = new HashMap<String, String>();
-                                    requestMap.put("uid", Util.uid);
+                                    MyApplication myApplication = (MyApplication)getApplication();
+                                    String uid =  myApplication.getUid();
+                                    requestMap.put("uid",  uid);
                                     requestMap.put("userPhone", et.getText().toString());
                                     String requestData = Util.json_encode(requestMap);
                                     String response = Util.sendJsonPost(requestData, urlEnum.ChangeMobile_URL);
@@ -186,7 +191,7 @@ public class SafeActivity extends ActionBarActivity {
     //添加actionbar(顶部导航栏)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar,menu);
+        getMenuInflater().inflate(R.menu.action_time,menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//添加返回箭头
         getSupportActionBar().setTitle("账号与安全");  //设置Title文字
         return super.onCreateOptionsMenu(menu);

@@ -7,6 +7,7 @@
         android:icon="@drawable/app_bg"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name="common.MyApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -18,7 +19,7 @@
 
         <activity
             android:name=".RegistActivity"
-            android:label="@string/app_name">
+            android:label="注册">
         </activity>
 
         <activity
@@ -42,10 +43,6 @@
         </activity>
         <activity
             android:name=".NULLDeviceActivity"
-            android:label="添加设备">
-        </activity>
-        <activity
-            android:name=".AddDeviceActivity"
             android:label="我的设备">
         </activity>
         <activity
@@ -53,8 +50,16 @@
             android:label="我的设备">
         </activity>
         <activity
+            android:name=".AddDeviceActivity"
+            android:label="添加设备">
+        </activity>
+        <activity
+            android:name=".DeviceAddActivity"
+            android:label="添加设备">
+        </activity>
+        <activity
             android:name=".DataShowActivity"
-            android:label="我的设备">
+            android:label="温度数据">
         </activity>
         <activity
             android:name=".NULLWarnActivity"
@@ -63,6 +68,18 @@
         <activity
             android:name=".WarnTemActivity"
             android:label="设备预警">
+        </activity>
+        <activity
+            android:name=".ChooseTimeActivity"
+            android:label="选择时间">
+        </activity>
+        <activity
+            android:name=".ChooseTDActivity"
+            android:label="选择设备及时间">
+        </activity>
+        <activity
+            android:name=".HomeDateShowChooseTDActivity"
+            android:label="选择设备及时间">
         </activity>
     </application>
 

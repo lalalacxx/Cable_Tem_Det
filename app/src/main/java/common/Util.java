@@ -42,9 +42,6 @@ public class Util {
                         for (int i = 0; i < data.length; i++) {
                             map.put(data[i], bizData.getString(data[i]));
                         }
-//                        code = bizData.getString("code");
-//                        reason = bizData.getString("reason");
-//                        System.err.println("reason: " + reason);
                     }
                 }
         }
@@ -136,5 +133,86 @@ public class Util {
         }
         System.err.println("result:" +result);
         return result;
+    }
+    public static String[][] getResult2(String jsonData) {
+        String[][] result  = {};
+        try{
+            JSONObject jsonObject = new JSONObject(jsonData);
+            if(jsonObject != null) {
+                JSONObject bizData = jsonObject.getJSONObject("bizData");
+                if(bizData != null) {
+                    System.err.println("bizData:" +bizData);
+                    JSONArray resultTmp = bizData.getJSONArray("result");
+                    System.err.println("result.LENGTH:"+resultTmp.length());
+                    result = new String[resultTmp.length()][3];
+                    for(int j = 0;j < resultTmp.length();j++){
+                        JSONObject resultTmpJSONObject = resultTmp.getJSONObject(j);
+                        System.err.println("resultTmpJSONObject:" +resultTmpJSONObject);
+                        result[j][0] = resultTmpJSONObject.getString("did");
+                        result[j][1] = resultTmpJSONObject.getString("temperature");
+                        result[j][2] = resultTmpJSONObject.getString("update_time");
+                       // result.put("did",resultTmpJSONObject.getString("did"));
+                        //result.put("did",resultTmpJSONObject.getString("did"));
+                        //result.put("did",resultTmpJSONObject.getString("did"));
+                        System.err.println("result" +j+":"+result);
+                    }
+                    System.err.println("result.LENGTH:"+result.length);
+                }
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    public static String[] getTem(String jsonData) {
+        String[] temperature = {};
+        try{
+            JSONObject jsonObject = new JSONObject(jsonData);
+            if(jsonObject != null) {
+                JSONObject bizData = jsonObject.getJSONObject("bizData");
+                if(bizData != null) {
+                    System.err.println("bizData:" +bizData);
+                    JSONArray resultTmp = bizData.getJSONArray("temperature");
+                    temperature = new String[resultTmp.length()];
+                    for(int j = 0;j < resultTmp.length();j++){
+                        JSONObject resultTmpJSONObject = resultTmp.getJSONObject(j);
+                        System.err.println("resultTmpJSONObject:" +resultTmpJSONObject);
+                        temperature[j] = resultTmpJSONObject.getString("tem");
+                        System.err.println("temperature" +j+":"+temperature);
+                    }
+                }
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        System.err.println("temperature:" +temperature);
+        return temperature;
+    }
+    public static String[] getTD(String jsonData) {
+        String[] timeDate = {};
+        try{
+            JSONObject jsonObject = new JSONObject(jsonData);
+            if(jsonObject != null) {
+                JSONObject bizData = jsonObject.getJSONObject("bizData");
+                if(bizData != null) {
+                    System.err.println("bizData:" +bizData);
+                    JSONArray resultTmp = bizData.getJSONArray("timeDate");
+                    timeDate = new String[resultTmp.length()];
+                    for(int j = 0;j < resultTmp.length();j++){
+                        JSONObject resultTmpJSONObject = resultTmp.getJSONObject(j);
+                        System.err.println("resultTmpJSONObject:" +resultTmpJSONObject);
+                        timeDate[j] = resultTmpJSONObject.getString("update_time");
+                        System.err.println("timeDate" +j+":"+timeDate);
+                    }
+                }
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        System.err.println("timeDate:" +timeDate);
+        return timeDate;
     }
 }

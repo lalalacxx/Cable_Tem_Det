@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import bsEnum.urlEnum;
+import common.MyApplication;
 import common.Util;
 
 /**
@@ -58,7 +59,9 @@ public class AddDeviceActivity  extends ActionBarActivity{
                         @Override
                         public void run() {
                             Map<String, String> requestMap = new HashMap<String, String>();
-                            requestMap.put("uid", Util.uid);
+                            MyApplication myApplication = (MyApplication)getApplication();
+                            String uid = myApplication.getUid();
+                            requestMap.put("uid", uid);
                             requestMap.put("did", deviceNum);
                             requestMap.put("verifyCode", deviceCode);
                             String requestData = Util.json_encode(requestMap);
@@ -74,8 +77,42 @@ public class AddDeviceActivity  extends ActionBarActivity{
                                 Looper.loop();// 进入loop中的循环，查看消息队列
                             } else//添加设备成功,跳转至我的设备界面
                             {
-                                startActivity(new Intent(AddDeviceActivity.this, MyDeviceActivity.class));
-                                AddDeviceActivity.this.finish();
+                                //向服务端传输数据
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Map<String, String> requestMap = new HashMap<String, String>();
+                                        MyApplication myApplication = (MyApplication)getApplication();
+                                        String uid =  myApplication.getUid();
+                                        requestMap.put("uid", uid);
+                                        String requestData = Util.json_encode(requestMap);
+                                        String response = Util.sendJsonPost(requestData, urlEnum.GetUserDevice_URL);
+                                        Map<String, String> responseMap = new HashMap<String, String>();
+                                        String[] data = {"code", "reason"};
+                                        responseMap = Util.json_decode(data, response);
+                                        String code = responseMap.get("code");
+                                        System.err.println("code:" + code);
+                                        if (code != null) {
+                                            //请求失败,给出原因
+                                            Looper.prepare();
+                                            Toast.makeText(AddDeviceActivity.this, responseMap.get("reason"), Toast.LENGTH_SHORT).show();
+                                            Looper.loop();// 进入loop中的循环，查看消息队列
+                                        } else {//请求成功,查看result是否为空
+                                            String[] result = Util.getResult(response);
+                                            if (result.length == 0) {//result没有元素表示没有可供查看的设备
+                                                System.err.println("result.length:" + result.length);
+                                                startActivity(new Intent(AddDeviceActivity.this, NULLDeviceActivity.class));
+                                                AddDeviceActivity.this.finish();
+                                            } else {//result不为空,则取出每一个数据
+                                                Intent intent = new Intent(AddDeviceActivity.this, MyDeviceActivity.class);
+                                                Bundle bundle_path = new Bundle();
+                                                bundle_path.putSerializable("DATA", result);
+                                                intent.putExtras(bundle_path);
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    }
+                                }).start();
                             }
                         }
                     }).start();

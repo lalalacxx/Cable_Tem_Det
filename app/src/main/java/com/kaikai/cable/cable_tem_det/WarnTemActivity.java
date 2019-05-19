@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 import bsEnum.urlEnum;
+import common.MyApplication;
+import common.SerializableMap;
 import common.Util;
 
 /**
@@ -31,78 +33,53 @@ public class WarnTemActivity extends ActionBarActivity {
         setContentView(R.layout.activity_devicemain);
         Intent intent = getIntent();//getIntent将该项目中包含的原始intent检索出来，将检索出来的intent赋值给一个Intent类型的变量intent
         Bundle bundle = getIntent().getExtras();//.getExtras()得到intent所附带的额外数据
-        String[] result = bundle.getStringArray("DATA");//getString()返回指定key的值
-
+        SerializableMap result = (SerializableMap) bundle.get("DATA");
         List<Map<String, String>> ls = new ArrayList<Map<String, String>>();
-        Map<String, String> map = new HashMap<String, String>();
-
-        for(int i = 0;i < result.length;i++) {
-            map.put("did", result[i]);
+        System.err.println("result.LENGTHhah:"+result.size());
+        for (int i = 0; i < result.size();i++) {
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("did", result.showData(i,0));
+            map.put("temperature", result.showData(i,1));
+            map.put("update_time", result.showData(i,2));
             ls.add(map);
-            System.err.println("呵呵呵:"+result[i]);
+            System.err.println("设备:" + result.showData(i, 0)+"  温度" + result.showData(i, 1)+"  时间" + result.showData(i, 2));
         }
         //使用标签ListView存放
-        ListView WarnList = (ListView) findViewById(R.id.WarnList);
+        ListView warnList = (ListView) findViewById(R.id.WarnList);
         //将list中每个对象虚拟为一个Item，然后再存入Grid中的每一行,listitemlayout就相当于一个item
         ListAdapter adapter = new SimpleAdapter(this, ls, R.layout.activity_warnitem,
-                new String[] {"did","tem"}, new int[] {R.id.warndid,R.id.warntem});
-        WarnList.setAdapter(adapter);
-        WarnList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                new String[] {"did","temperature","update_time"}, new int[] {R.id.warnDid,R.id.warnTem,R.id.warnDate});
+        warnList.setAdapter(adapter);
+        //监听item
+        warnList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //position 点击的Item位置，从0开始算
-                Intent intent = new Intent();
-                intent.putExtra("xx", "");//传递给下一个Activity的值
-                startActivity(intent);//启动Activity
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                HashMap<String, String> map = (HashMap<String, String>) parent
+                        .getItemAtPosition(position);
+                final String did = map.get("did");
+                final String date = map.get("update_time");
+                //拆分获取到的日期date(拆分出year,month,day,hour)
+                //final String year =
+                //final String month =
+                //final String day =
+                //final String hour =
+                Intent intent = new Intent(WarnTemActivity.this, DataShowActivity.class);
+                Bundle bundle_path = new Bundle();
+                bundle_path.putSerializable("DID", did);
+                //bundle_path.putSerializable("YEAR",year );
+               // bundle_path.putSerializable("MONTH", month);
+               // bundle_path.putSerializable("DAY", day);
+                //bundle_path.putSerializable("HOUR", hour);
+                intent.putExtras(bundle_path);
+                startActivity(intent);
             }
         });
-
-        // System.err.println("str.length:"+result.length);
     }
 
-   /* public void onItemClick(AdapterView<?> parent, View view, int position,
-                            long id) {
-        System.out.println("当前值："+position);
-        Map<String, String> temp = map.get(position);
-//temp是该选项的内容*/
-
-
-    //点击设备号弹出对话框(可供选择:删除,查看数据)
-    public void check_del(View view) {
-        final TextView did = new TextView(this);
-        //Map<String, String> temp = map.get(position);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Map<String, String> requestMap = new HashMap<String, String>();
-                requestMap.put("uid", Util.uid);
-                requestMap.put("did", did.getText().toString());
-                System.err.println("did_did:"+did.getText().toString());
-                String requestData = Util.json_encode(requestMap);
-                String response = Util.sendJsonPost(requestData, urlEnum.LOGIN_URL);
-                Map<String, String> responseMap = new HashMap<String, String>();
-                String[] data = {"code", "reason"};
-                responseMap = Util.json_decode(data, response);
-                String code = responseMap.get("code");
-                System.err.println("code:" + code);
-                if (code != null) {//查看数据失败,给出原因
-                    Looper.prepare();
-                    Toast.makeText(WarnTemActivity.this, responseMap.get("reason"), Toast.LENGTH_SHORT).show();
-                    Looper.loop();// 进入loop中的循环，查看消息队列
-                } else {
-                    //查看数据成功,跳转至数据展示界面
-                    startActivity(new Intent(WarnTemActivity.this, DataShowActivity.class));
-                    WarnTemActivity.this.finish();
-                }
-            }
-        }).start();
-    }
-
-
-    //ActionBar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar,menu);
+        getMenuInflater().inflate(R.menu.action_time,menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//添加返回箭头
         getSupportActionBar().setTitle("温度预警");  //设置Title文字
         return super.onCreateOptionsMenu(menu);
